@@ -95,7 +95,7 @@ public class TicTacToeGame {
             }
         }
 
-        // If any condition is met, return true
+        // If any condition is met, return true else false
         return rowWin || colWin || primaryDiagonalWin || secondaryDiagonalWin;
     }
 }
