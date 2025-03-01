@@ -15,9 +15,9 @@ public class CommandFactory {
         commands.put("leave", new LeaveCommand());
         //allotment status
         commands.put("status", new StatusCommand());
-        commands.put("find_cars_by_color", new FindCarsByColorCommand());
-        commands.put("find_slots_by_color", new FindSlotsByColorCommand());
-        commands.put("find_slot_by_reg_number", new FindSlotByRegNumberCommand());
+       // find cars by color command commands.put("find_cars_by_color", new FindCarsByColorCommand());
+       // find slots by color commands.put("find_slots_by_color", new FindSlotsByColorCommand());
+       //find slot by reg number commands.put("find_slot_by_reg_number", new FindSlotByRegNumberCommand());
     }
     public static Command getCommand(String commandName) {
         return commands.get(commandName);
