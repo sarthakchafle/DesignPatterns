@@ -7,10 +7,13 @@ public class CommandFactory {
     private static final Map<String, Command> commands = new HashMap<>();
 
     static {
-
+        //craete parking lot with capacity
         commands.put("create_parking_lot", new CreateParkingLotCommand());
+        //leave command
         commands.put("park", new ParkCommand());
+        //leave command
         commands.put("leave", new LeaveCommand());
+        //allotment status
         commands.put("status", new StatusCommand());
         commands.put("find_cars_by_color", new FindCarsByColorCommand());
         commands.put("find_slots_by_color", new FindSlotsByColorCommand());
