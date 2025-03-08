@@ -1,8 +1,6 @@
 package Zomato;
 
-import java.awt.*;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class Order {
@@ -16,7 +14,7 @@ public class Order {
 
     public Order(OrderBuilder orderBuilder) {
         this.orderId = UUID.randomUUID().toString();
-        this.customer = orderBuilder.customer;
+        this.customer = (Customer) orderBuilder.customer;
         this.restaurant = orderBuilder.restaurant;
         this.items = orderBuilder.items;
         this.totalPrice = orderBuilder.totalPrice;
@@ -26,13 +24,13 @@ public class Order {
     }
 
     public static class OrderBuilder {
-        private Customer customer;
+        private User customer;
         private Restaurant restaurant;
         private List<MenuItem> items;
         private double totalPrice;
         private OrderNotifier notifier;
 
-        public OrderBuilder(Customer customer, Restaurant restaurant, OrderNotifier notifier) {
+        public OrderBuilder(User customer, Restaurant restaurant, OrderNotifier notifier) {
             this.customer = customer;
             this.restaurant = restaurant;
             this.notifier = notifier;

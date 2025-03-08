@@ -12,6 +12,9 @@ public class Cart{
     public List<MenuItem> getItems(){
         return items;
     }
+    public boolean isEmpty(){
+        return items.isEmpty();
+    }
     public void clearCart(){
         items.clear();
         System.out.println("Cart has been cleared");
