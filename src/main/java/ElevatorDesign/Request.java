@@ -1,19 +1,13 @@
 package ElevatorDesign;
 
 public class Request {
-    private final int sourceFloor;
-    private  final int destinationFloor;
+    private final int floor;
 
-    public Request(int sourceFloor, int destinationFloor) {
-        this.sourceFloor = sourceFloor;
-        this.destinationFloor = destinationFloor;
+    public Request(int floor) {
+        this.floor = floor;
     }
 
-    public int getSourceFloor() {
-        return sourceFloor;
-    }
-
-    public int getDestinationFloor() {
-        return destinationFloor;
+    public int getFloor() {
+        return floor;
     }
 }

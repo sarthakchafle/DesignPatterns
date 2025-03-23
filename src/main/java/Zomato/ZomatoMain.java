@@ -18,9 +18,9 @@ public class ZomatoMain {
             return;
         }
         Order order = new Order.OrderBuilder(customer,restaurant,orderNotifier).addItems(cart.getItems()).build();
-        order.displayOrderDetails();;
+        order.displayOrderDetails();
 
-        PaymentProcessor paymentProcessor = new PaymentProcessor(new CreditCardPayment());
+        PaymentProcessor paymentProcessor = new PaymentProcessor(new Upi());
 
         paymentProcessor.processPayment(order.getTotalPrice());
 
