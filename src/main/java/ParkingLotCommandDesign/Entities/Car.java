@@ -1,7 +1,9 @@
 package ParkingLotCommandDesign.Entities;
 
+import ParkingLotCommandDesign.ParkingFeeStrategy;
+
 public class Car extends Vehicle {
-    public Car(String registrationNumber, String color) {
-        super(registrationNumber, color);
+    public Car(String vehicleType,String registrationNumber, String color, ParkingFeeStrategy parkingFeeStrategy) {
+        super("Car",registrationNumber, color,parkingFeeStrategy);
     }
 }
