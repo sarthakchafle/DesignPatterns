@@ -9,10 +9,12 @@ public class InventoryManager {
     private List<Warehouse> warehouseList;
     private ProductFactory productFactory;
     private ReplenishmentStrategy replenishmentStrategy;
+    private List<InventoryObserver> inventoryObservers;
 
     private InventoryManager(){
         warehouseList=new ArrayList<>();
         productFactory = new ProductFactory();
+        inventoryObservers = new ArrayList<>();
     }
     public static synchronized InventoryManager getInstance(){
         if(instance==null){
@@ -51,7 +53,7 @@ public class InventoryManager {
         if (product != null) {
             // If product is below threshold, notify observers
             if (product.getQuantity() < product.getThreshold()) {
-//                notifyObservers(product);
+               notifyObservers(product);
                 // Apply current replenishment strategy
                 if (replenishmentStrategy != null) {
                     replenishmentStrategy.replinish(product);
@@ -65,12 +67,23 @@ public class InventoryManager {
         for (Warehouse warehouse : warehouseList) {
             for (Product product : warehouse.getAllProducts()) {
                 if (product.getQuantity() < product.getThreshold()) {
-//                    notifyObservers(product);
+                    notifyObservers(product);
                     if (replenishmentStrategy != null) {
                         replenishmentStrategy.replinish(product);
                     }
                 }
             }
+        }
+    }
+    public void addObserver(InventoryObserver observer){
+        inventoryObservers.add(observer);
+    }
+    public void removeObserver(InventoryObserver observer){
+        inventoryObservers.remove(observer);
+    }
+    public void notifyObservers(Product product){
+        for (var i: inventoryObservers){
+            i.update(product);
         }
     }
 }

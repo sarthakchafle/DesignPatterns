@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 
 @AllArgsConstructor
@@ -18,6 +19,7 @@ public class Warehouse {
 
     public Warehouse(String s) {
         this.name=s;
+        this.productsMap = new HashMap<>();
     }
 
     public void addProduct(Product product, int quantity){
