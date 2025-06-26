@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 
 public class TokenBucket {
     int capacity;
-    double tokens;
+    int tokens;
     long lastRefillTimestamp;
     double refillRate;
 
@@ -18,17 +18,17 @@ public class TokenBucket {
 
     public synchronized boolean allowRequest(){
         refill();
-        if(tokens>=1.0){
-            tokens-=1.0;
+        if(tokens>=1){
+            tokens-=1;
             return true;
         }
         return false;
     }
     private void refill(){
         long now = System.nanoTime();
-        double secondsSinceLast = (now - lastRefillTimestamp)/100000000.0;
-        double tokensToAdd = secondsSinceLast * refillRate;
-        if(tokensToAdd>0.0){
+        int secondsSinceLast = (int) ((now - lastRefillTimestamp)/100000000.0);
+        int tokensToAdd = (int) (secondsSinceLast * refillRate);
+        if(tokensToAdd>0){
             tokens = Math.min(capacity,tokens+tokensToAdd);
             lastRefillTimestamp= now;
         }
