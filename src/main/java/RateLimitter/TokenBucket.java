@@ -19,7 +19,7 @@ public class TokenBucket {
     public synchronized boolean allowRequest(){
         refill();
         if(tokens>=1){
-            tokens-=1;
+            tokens-=1; 
             return true;
         }
         return false;
