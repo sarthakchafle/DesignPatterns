@@ -1,11 +1,13 @@
 package BuilderDesignPattern;
 
+import BuilderDesignPattern.Builder.CarBuilder;
 import BuilderDesignPattern.Builder.CarBuilderImpl;
 import BuilderDesignPattern.Car.Car;
 
 public class Main {
     public static void main(String[] args) {
-        Car car = new CarBuilderImpl()
+        CarBuilder carBuilder = new CarBuilderImpl();
+        Car car = carBuilder
                 .setEngine("V8 Turbo")
                 .setWheels(4)
                 .setAirBags(true)

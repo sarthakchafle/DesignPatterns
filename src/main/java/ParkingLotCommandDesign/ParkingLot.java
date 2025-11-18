@@ -57,9 +57,12 @@ public class ParkingLot {
             System.out.println("Slot number " + slotNumber + " is already empty.");
             return;
         }
+        double carFee = slot.getParkedVehicle().calculateFee(2, DurationType.HOURS);
         slot.leave();
         availableSlots.add(slot);
+
         System.out.println("Slot number " + slotNumber + " is free.");
+        System.out.println("Parking fee is Rs "+carFee);
     }
 
     public void status() {
